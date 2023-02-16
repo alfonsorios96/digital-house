@@ -1,12 +1,14 @@
 import { Dimensions } from 'react-native';
 
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 export default {
   window: {
-    width,
-    height,
+    width: screenWidth,
+    height: screenHeight,
   },
-  isSmallDevice: width < 375,
+  isSmallDevice: screenWidth < 375,
+  figmaWidth: 393,
+  screenRatio: screenWidth / 393,
 };

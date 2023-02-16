@@ -1,36 +1,53 @@
 import {StyleSheet} from 'react-native';
+import constants from '../../constants/Layout';
+import colors from '../../constants/Colors';
+
+const {window, screenRatio} = constants;
 
 export const styles = StyleSheet.create({
     container: {
-        width: 286,
-        height: 143,
-        borderRadius: 20,
-        backgroundColor: '#334FFA',
+        width: window.width * 0.95,
+        borderRadius: screenRatio * 10,
     },
-    shadowProp: {
-        shadowColor: '##000000',
-        shadowOffset: {width: 4, height: 4},
-        shadowOpacity: 0.5,
-        shadowRadius: 3,
+    item: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: screenRatio * 12,
+        paddingHorizontal: screenRatio * 16,
+        borderRadius: screenRatio * 10,
+        backgroundColor: colors.white,
+    },
+    image: {
+        width: screenRatio * 55,
+        height: screenRatio * 55,
+        borderRadius: screenRatio * 10,
+        marginRight: screenRatio * 16,
     },
     title: {
-        marginLeft: 19,
-        marginTop: 21,
-        fontFamily: 'Avenir',
-        fontStyle: 'normal',
-        fontSize: 16,
-        lineHeight: 22,
-        color: '#FFFFFF',
         fontWeight: 'bold',
+        fontSize: screenRatio * 14,
+        lineHeight: screenRatio * 19,
+        color: colors.black,
     },
     description: {
-        marginLeft: 48,
-        marginTop: 7,
-        fontFamily: 'Avenir',
-        fontStyle: 'normal',
-        fontSize: 32,
-        lineHeight: 44,
-        color: '#FFFFFF',
+        fontSize: screenRatio * 12,
+    },
+    balance: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginLeft: screenRatio * 50,
+        marginRight: screenRatio * 12,
+    },
+    points: {
+        fontSize: screenRatio * 16,
+        lineHeight: screenRatio * 22,
         fontWeight: 'bold',
+    },
+    positive: {
+        color: colors.green,
+    },
+    negative: {
+        color: colors.red,
+        fontWeight: 'normal',
     },
 });
