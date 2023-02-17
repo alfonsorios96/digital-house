@@ -38,7 +38,7 @@ const Item: React.FC<ItemProps> = ({id, product, createdAt, image, onPress}) => 
         <TouchableOpacity onPress={onPress}>
             <View style={styles.item}>
                 <Image style={styles.image} source={{uri: image}}/>
-                <View>
+                <View style={styles.details}>
                     <Text style={styles.title}>{product}</Text>
                     <Text style={styles.description}>{_formatDate(createdAt)}</Text>
                 </View>
@@ -46,9 +46,11 @@ const Item: React.FC<ItemProps> = ({id, product, createdAt, image, onPress}) => 
                     <Text style={[styles.points, styles.positive]}>+</Text>
                     <Text style={styles.points}>100</Text>
                 </View>
-                <TouchableOpacity>
-                    <Text> {'>'} </Text>
-                </TouchableOpacity>
+                <View>
+                    <TouchableOpacity>
+                        <Text style={styles.nextIcon}> {'>'} </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </TouchableOpacity>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {RootTabScreenProps} from '../../types';
 import {Text, View, Button} from '../../components/Themed';
@@ -111,16 +111,41 @@ const data: ItemProps[] = [
     }];
 
 export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
+    const [isFiltering, setIsFiltering] = useState(false);
+
+    const renderButtons = () => {
+        return isFiltering ? (<Button title="Todos" onPress={() => {
+            setIsFiltering(false);
+        }}/>) : (<View>
+            <Button title="Ganados" onPress={() => {
+                setIsFiltering(true);
+            }}/>
+            <Button title="Canjeados" onPress={() => {
+                setIsFiltering(true);
+            }}/>
+        </View>)
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Bienvenido de vuelta!</Text>
             <Text style={styles.subtitle}>Ruben Rodriguez</Text>
             <Text style={styles.section}>TUS PUNTOS</Text>
-            <Card title="Diciembre" description="10,00.00 pts"/>
+            <Card style={styles.card} title="Diciembre" description="10,00.00 pts"/>
             <Text style={styles.section}>TUS MOVIMIENTOS</Text>
             <List items={data}></List>
-            <Button title="Todos" onPress={() => {
-            }}/>
+            {
+                !isFiltering ? <Button style={styles.buttonLarge} title="Todos" onPress={() => {
+                    setIsFiltering(true);
+                }}/> : <View style={styles.buttonGroup}>
+                    <Button style={styles.buttonSmall} title="Ganados" onPress={() => {
+                        setIsFiltering(false);
+                    }}/>
+                    <Button style={styles.buttonSmall} title="Canjeados" onPress={() => {
+                        setIsFiltering(false);
+                    }}/>
+                </View>
+            }
         </View>
     );
 }

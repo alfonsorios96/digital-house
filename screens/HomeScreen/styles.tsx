@@ -7,22 +7,22 @@ const {window, screenRatio} = constants;
 export const styles = StyleSheet.create({
     container: {
         width: window.width,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        height: window.height,
+        marginTop: screenRatio * 50,
     },
     title: {
         fontFamily: 'Avenir',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: screenRatio * 20,
+        fontSize: screenRatio * 22,
         lineHeight: screenRatio * 27,
+        marginLeft: screenRatio * 20,
     },
     subtitle: {
         fontFamily: 'Avenir',
-        fontStyle: 'normal',
-        fontSize: screenRatio * 20,
+        fontSize: screenRatio * 18,
         lineHeight: screenRatio * 27,
+        marginLeft: screenRatio * 20,
     },
     section: {
         fontFamily: 'Avenir',
@@ -31,6 +31,11 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         lineHeight: screenRatio * 19,
         color: colors.grey,
+        marginLeft: screenRatio * 20,
+        marginVertical: screenRatio * 20,
+    },
+    card: {
+        marginLeft: screenRatio * 53,
     },
     item: {
         flexDirection: 'row',
@@ -50,5 +55,17 @@ export const styles = StyleSheet.create({
     description: {
         fontSize: screenRatio * 14,
         color: colors.greyLight,
+    },
+    buttonLarge: {
+        marginLeft: screenRatio * 20,
+    },
+    buttonGroup: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+    buttonSmall: {
+        maxWidth: screenRatio * 170,
+        height: screenRatio * 50,
     },
 });

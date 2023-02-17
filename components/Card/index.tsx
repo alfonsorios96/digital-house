@@ -1,17 +1,19 @@
 import {RootTabScreenProps} from '../../types';
 import {Text, View} from '../Themed';
-import {styles} from './styles';
+import {styles as defaultStyles} from './styles';
+import {ViewStyle} from "react-native";
 
 interface CardProps {
     title: string;
     description: string;
+    style?: ViewStyle;
 }
 
-export default function Card({ title, description }: CardProps) {
+export default function Card({ title, description, style }: CardProps) {
     return (
-        <View style={[styles.container, styles.shadowProp]}>
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.description}>{description}</Text>
+        <View style={[style, defaultStyles.container, defaultStyles.shadowProp]}>
+            <Text style={defaultStyles.title}>{title}</Text>
+            <Text style={defaultStyles.description}>{description}</Text>
         </View>
     );
 }
