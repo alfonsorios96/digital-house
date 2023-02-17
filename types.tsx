@@ -27,3 +27,10 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
   BottomTabScreenProps<RootTabParamList, Screen>,
   NativeStackScreenProps<RootStackParamList>
 >;
+
+export type FilterParams = 'all' | 'earned' | 'redeemed';
+
+export type CardDashboardParams = {
+  month: string;
+  points: number;
+};

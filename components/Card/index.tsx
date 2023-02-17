@@ -1,4 +1,3 @@
-import {RootTabScreenProps} from '../../types';
 import {Text, View} from '../Themed';
 import {styles as defaultStyles} from './styles';
 import {ViewStyle} from "react-native";
