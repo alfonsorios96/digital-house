@@ -30,7 +30,7 @@ export default function HomeScreen({navigation}: ScreenProps<'Home'>) {
         fetchData()
             .then(() => {
                 const cardDashboardParsed: CardDashboardParams[] = aggregateData(transactions);
-                //setCardDashboard(cardDashboardParsed[cardDashboardParsed.length - 1]);
+                setCardDashboard(cardDashboardParsed[cardDashboardParsed.length - 1]);
             }).catch(error => {
             console.error(error);
         });
