@@ -51,7 +51,7 @@ export function Button(props: ButtonInterface) {
 
     return (
         <View style={[buttonStyles, style]}>
-            <TouchableOpacity onPress={onPress}>
+            <TouchableOpacity onPress={onPress} testID="button">
                 <Text style={buttonTextStyles}>{title}</Text>
             </TouchableOpacity>
         </View>

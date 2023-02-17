@@ -29,7 +29,7 @@ interface ListProps {
 const Item: React.FC<ItemProps> = ({id, product, createdAt, image, points, is_redemption, onPress}) => {
     return (
         <TouchableOpacity onPress={() => onPress({id, product, createdAt, image, points, is_redemption})}>
-            <View style={styles.item}>
+            <View style={styles.item} testID={`list-item-${id}`}>
                 <Image style={styles.image} source={{uri: image}}/>
                 <View style={styles.details}>
                     <Text style={styles.title}>{product}</Text>
@@ -60,6 +60,7 @@ export default function List({items, filteredBy, onClick}: ListProps) {
                 <Item id={item.id} image={item.image} product={item.product} createdAt={item.createdAt}
                       onPress={onClick} is_redemption={item.is_redemption} points={item.points}/>
             )}
+            testID="list"
         />
     );
 }
