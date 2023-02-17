@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import constants from '../../constants/Layout';
 import colors from '../../constants/Colors';
 
-const {window, screenRatio} = constants;
+const {screenRatio} = constants;
 
 export const styles = StyleSheet.create({
     container: {
@@ -20,18 +20,14 @@ export const styles = StyleSheet.create({
     title: {
         marginLeft: screenRatio * 19,
         marginTop: screenRatio * 21,
-        fontFamily: 'Avenir',
-        fontStyle: 'normal',
         fontSize: screenRatio * 16,
         lineHeight: screenRatio * 22,
         color: colors.white,
         fontWeight: 'bold',
     },
     description: {
-        marginLeft: screenRatio * 48,
+        textAlign: 'center',
         marginTop: screenRatio * 7,
-        fontFamily: 'Avenir',
-        fontStyle: 'normal',
         fontSize: screenRatio * 32,
         lineHeight: screenRatio * 44,
         color: colors.white,

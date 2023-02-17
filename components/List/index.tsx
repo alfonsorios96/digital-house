@@ -23,11 +23,12 @@ export interface ItemProps {
 interface ListProps {
     items: ItemProps[];
     filteredBy: FilterParams;
+    onClick: () => void;
 }
 
 const Item: React.FC<ItemProps> = ({id, product, createdAt, image, points, is_redemption, onPress}) => {
     return (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={() => onPress({id, product, createdAt, image, points, is_redemption})}>
             <View style={styles.item}>
                 <Image style={styles.image} source={{uri: image}}/>
                 <View style={styles.details}>
@@ -49,7 +50,7 @@ const Item: React.FC<ItemProps> = ({id, product, createdAt, image, points, is_re
     );
 };
 
-export default function List({items, filteredBy}: ListProps) {
+export default function List({items, filteredBy, onClick}: ListProps) {
     return (
         <FlatList
             style={styles.container}
@@ -57,7 +58,7 @@ export default function List({items, filteredBy}: ListProps) {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({item}) => (
                 <Item id={item.id} image={item.image} product={item.product} createdAt={item.createdAt}
-                      onPress={item.onPress} is_redemption={item.is_redemption} points={item.points}/>
+                      onPress={onClick} is_redemption={item.is_redemption} points={item.points}/>
             )}
         />
     );
