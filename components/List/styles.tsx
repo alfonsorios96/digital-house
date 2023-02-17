@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     },
     details: {
         width: screenRatio * 144,
-        marginRight: screenRatio * 60,
+        marginRight: screenRatio * 40,
     },
     balance: {
         display: 'flex',

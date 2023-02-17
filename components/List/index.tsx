@@ -18,8 +18,11 @@ export interface ItemProps {
     reason?: string;
 }
 
+type FilterParams = 'all' | 'earned' | 'redeemed';
+
 interface ListProps {
     items: ItemProps[];
+    filteredBy: FilterParams;
 }
 
 function _formatDate(date: string): string {
@@ -33,7 +36,24 @@ function _formatDate(date: string): string {
     return `${day} de ${monthName}, ${year}`;
 }
 
-const Item: React.FC<ItemProps> = ({id, product, createdAt, image, onPress}) => {
+function _filter(filter: FilterParams, items: ItemProps[]): ItemProps[] {
+    let filteredData: ItemProps[] = [];
+    switch (filter) {
+        case 'redeemed':
+            filteredData = items.filter(item => item.is_redemption);
+            break;
+        case 'earned':
+            filteredData = items.filter(item => !item.is_redemption);
+            break;
+        case 'all':
+        default:
+            filteredData = [...items];
+            break;
+    }
+    return filteredData;
+}
+
+const Item: React.FC<ItemProps> = ({id, product, createdAt, image, points, is_redemption, onPress}) => {
     return (
         <TouchableOpacity onPress={onPress}>
             <View style={styles.item}>
@@ -43,8 +63,8 @@ const Item: React.FC<ItemProps> = ({id, product, createdAt, image, onPress}) => 
                     <Text style={styles.description}>{_formatDate(createdAt)}</Text>
                 </View>
                 <View style={styles.balance}>
-                    <Text style={[styles.points, styles.positive]}>+</Text>
-                    <Text style={styles.points}>100</Text>
+                    {is_redemption ? <Text style={[styles.points, styles.negative]}>-</Text> : <Text style={[styles.points, styles.positive]}>+</Text>}
+                    <Text style={styles.points}>{points}</Text>
                 </View>
                 <View>
                     <TouchableOpacity>
@@ -56,11 +76,11 @@ const Item: React.FC<ItemProps> = ({id, product, createdAt, image, onPress}) => 
     );
 };
 
-export default function List({items}: ListProps) {
+export default function List({items, filteredBy}: ListProps) {
     return (
         <FlatList
             style={styles.container}
-            data={items}
+            data={_filter(filteredBy, items)}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({item}) => (
                 <Item id={item.id} image={item.image} product={item.product} createdAt={item.createdAt}
