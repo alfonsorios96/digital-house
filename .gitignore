@@ -1,5 +1,6 @@
 node_modules/
 .idea/
+components/__tests__/__snapshots__/
 .expo/
 dist/
 npm-debug.*
